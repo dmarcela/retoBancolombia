@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class CountriesDTO {
     private String name;
+    private String name2;
     private String tld;
     private String cca2;
     private String ccn3;
