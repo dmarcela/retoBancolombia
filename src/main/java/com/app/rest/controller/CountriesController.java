@@ -1,7 +1,8 @@
-package com.app.rest.controler;
+package com.app.rest.controller;
 
 import com.app.rest.dto.CountriesDTO;
 import com.app.rest.service.CountriesService;
+import com.app.rest.service.impl.CountriesServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,10 +17,12 @@ import java.util.List;
 public class CountriesController {
 
     @Autowired
-    private final CountriesService countriesService;
-    @GetMapping
-    public ResponseEntity<List<CountriesDTO>> getCountryByName() {
-        return new ResponseEntity<>(countriesService.getCountries(), HttpStatus.OK);
+    private final CountriesServiceImpl countriesService;
+
+    @GetMapping("/{name}")
+    public ResponseEntity<CountriesDTO> getCountryByName(@PathVariable("name") String name){
+        CountriesDTO countriesDTO = countriesService.getCountrieByName(name);
+        return ResponseEntity.status(HttpStatus.CREATED).body(countriesDTO);
     }
 
     @PostMapping
