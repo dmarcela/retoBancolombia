@@ -25,12 +25,6 @@ public class CountriesController {
         return ResponseEntity.status(HttpStatus.CREATED).body(countriesDTO);
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public void saveCountries(@RequestBody CountriesDTO countries) {
-
-    }
-
 }
 
 
